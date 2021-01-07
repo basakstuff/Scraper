@@ -1,0 +1,591 @@
+
+All example Python source code in this tutorial is granted to the public domain. Therefore you may modify it and relicense it under any license you please. Since you are expected to learn programming, the GNU Free Documentation License would require you to keep all programs that are derived from the source code in this tutorial under that license. Since the python source code is granted to the public domain, that requirement is waived.
+This tutorial was originally written in LaTeX and was available at: http://www.honors.montana.edu/~jjc/easytut/. It was moved here because the other server is going away and it was being read at least ten times a day. This document is available as LaTeX, HTML, PDF, and Postscript. Go to http://jjc.freeshell.org/easytut/ (Also could try http://web.archive.org/web/*/http://www.honors.montana.edu/~jjc/easytut/ or http://www.geocities.com/jrincayc/easytut.tar.gz ) to see all these forms.
+There are also versions of this in Korean, Spanish, Italian and Greek in the tar file.
+The Non-Programmers' Tutorial For Python is a tutorial designed to be an introduction to the Python programming language. This guide is for someone with no programming experience.
+If you have programmed in other languages I recommend using Python Tutorial for Programmers written by Guido van Rossum.
+If you have any questions or comments please use the discussion pages or see Non-Programmer's Tutorial for Python 2.6/Authors for author contact information. I welcome questions and comments about this tutorial. I will try to answer any questions you have as best I can.
+Thanks go to James A. Brown for writing most of the Windows install info. Thanks also to Elizabeth Cogliati for complaining enough :) about the original tutorial (that is almost unusable for a non-programmer), for proofreading, and for many ideas and comments on it. Thanks to Joe Oppegaard for writing almost all the exercises. Thanks to everyone I have missed.
+See also chapter The End for some more comments.
+So, you've never programmed before.  As we go through this tutorial, I
+will attempt to teach you how to program.  There really is only one
+way to learn to program.   You must read code and write code (as computer programs are often called).
+I'm going to show you lots of code.  You should type in code that I
+show you to see what happens.  Play around with it and make changes.
+The worst that can happen is that it won't work.  When I type in code
+it will be formatted like this:
+That's so it is easy to distinguish from the other text.  If you're reading this on the web, you'll notice the code is in color -- that's just to make it stand out, and to make the different parts of the code stand out from each other.  The code you enter will probably not be colored, or the colors may be different, but it won't affect the code as long as you enter it the same way as it's printed here. 
+If the computer prints something out it will be formatted like this:
+(Note that printed text goes to your screen, and does not involve paper. Before computers had screens, the output of computer programs would be printed on paper.)
+If you try this program out and you get a syntax error, check and see what version of python you have.  If you have python 3.0, you should be using the Non-Programmer's Tutorial for Python 3.0. This article was made for Python 2.6
+There will often be a mixture of the text you type (which is shown in bold) and the text the program prints to the screen, which would look like this:
+(Some of the tutorial has not been converted to this format. Since this is a wiki, you can convert it when you find it.)
+I will also introduce you to the terminology of programming - for example, that programming is often referred to as coding.  This will not only help you understand what programmers are talking about, but also help the learning process.
+Now, on to more important things.  In order to program in Python you need the Python software.  If you don't already have the Python software go to http://www.python.org/download/ and get the proper version for your platform.  Download it, read the instructions and get it installed.
+For Python programming you need a working Python installation and a text editor. Python comes with its own editor IDLE, which is quite nice and totally sufficient for the beginning. As you get more into programming, you will probably switch to some other editor like emacs, vi or another.
+The Python download page is http://www.python.org/download. The most recent version is 3.1, but any Python 2.x version since 2.2 will work for this tutorial. Be careful with the upcoming Python 3, though, as some major details will change and break this tutorial's examples. A version of this tutorial for Python 3 is at Non-Programmer's Tutorial for Python 3. There are various different installation files for different computer platforms available on the download site. Here are some specific instructions for the most common operating systems:
+You are probably lucky and Python is already installed on your machine. To test it type python on a command line. If you see something like that in the following section, you are set.
+If you have to install Python, just use the operating system's package manager or go to the repository where your packages are available and get Python. Alternatively, you can compile Python from scratch after downloading the source code. If you get the source code make sure you compile in the Tk extension if you want to use IDLE.
+Starting from Mac OS X (Tiger), Python ships by default with the operating system, but you  might want to update to the newer version (check the version by starting python in a command line terminal). Also IDLE (the Python editor) might be missing in the standard installation. If you want to (re-)install Python, have a look at the Mac page on the Python download site.
+Some computer manufacturers pre-install Python. To check if you already have it installed, open command prompt (cmd in run menu) or MS-DOS and type python. If it says "Bad command or file name" you will need to download the appropriate Windows installer (the normal one, if you do not have a 64-bit AMD or Intel chip). Start the installer by double-clicking it and follow the procedure.
+Python for windows can be downloaded from the official site of python
+Go into IDLE (also called the Python GUI).  You should see a window that has some text like this:
+The >>> is Python's way of telling you that you are in
+interactive mode.  In interactive mode what you type is immediately
+run.  Try typing 1+1 in. Python will respond with 2.
+Interactive mode allows you to test out and see what Python will do.
+If you ever feel you need to play with new Python statements, go into
+interactive mode and try them out.
+Go into IDLE if you are not already.  In the menu at the top, select File then New Window.  In the new window that appears, type the following:
+Now save the program: select File from the menu, then Save.  Save it as "hello.py" (you can save it in any folder you want).  Now that it is saved it can be run.  
+Next run the program by going to Run then Run Module (or if you have a older version of IDLE use Edit then Run script).  This will output Hello, World! on the *Python Shell* window.  
+For a more in-depth introduction to IDLE, a longer tutorial with screenshots can be found at http://hkn.eecs.berkeley.edu/~dyoo/python/idle_intro/index.html
+If you are using Unix (such as Linux, Mac OSX, or BSD), if you make the program executable with chmod, and have as the first line:
+you can run the python program with ./hello.py like any other command.
+Note: In some computer environments, you need to write: 
+Example for Solaris:
+It is very useful to stick to some rules regarding the file names of Python programs. Otherwise some things might go wrong unexpectedly.  These don't matter as much for programs, but you can have weird problems if you don't follow them for module names (modules will be discussed later).
+If you don't want to use Python from the command line, you don't have to, just use IDLE.  To get into interactive mode just type python without any arguments.  To run a program, create it with a text editor (Emacs has a good Python mode) and then run it with python program_name.
+Additionally, to use Python within Vim, you may want to visit Using vim as a Python IDE
+At some point in your Python career you will probably get stuck and have no clue about how to solve the problem you are supposed to work on. This tutorial only covers the basics of Python programming, but there is a lot of further information available.
+First of all, Python is very well documented. There might even be copies of these documents on your computer, which came with your Python installation:
+* The official Python Tutorial by Guido van Rossum is often a good starting point for general questions.
+There are a lot of other Python users out there, and usually they are nice and willing to help you. This very active user community is organised mostly through mailing lists and a newsgroup:
+In order not to reinvent the wheel and discuss the same questions again and again, people will appreciate very much if you do a web search for a solution to your problem before contacting these lists!
+You should know how to edit programs in a text editor or IDLE, save the file and run the file once the files have been saved to your disk.
+Programming tutorials since the beginning of time have started with a little program called "Hello, World!"[1] The syntax changed in Python 3.0. If you are using Python 3.0, you should be reading Non-Programmer's Tutorial for Python 3 instead. So here is the Python 2.6 example:
+If you are using the command line to run programs then type it in with a text editor, save it as hello.py and run it with python hello.py
+Otherwise go into IDLE, create a new window, and create the program as
+in section Creating and Running Programs.
+When this program is run here's what it prints:
+Now I'm not going to tell you this every time, but when I show you a
+program I recommend that you type it in and run it.  I learn better
+when I type it in and you probably do too.
+Now here is a more complicated program:
+When you run this program it prints out:
+When the computer runs this program it first sees the line:
+so the computer prints:
+Then the computer goes down to the next line and sees:
+So the computer prints to the screen:
+The computer keeps looking at each line, follows the command and then goes on to the next line.  The computer keeps running commands until it reaches the end of the program.
+Now is probably a good time to give you a bit of an explanation of what is happening - and a little bit of programming terminology.
+What we were doing above was using a command called print.  The print command is followed by one or more arguments.  So in this example
+there is one argument, which is "Hello, World!".  Note that this argument is a group of characters enclosed in double quotes (").  This is commonly referred to as a string of characters, or string, for short.  Another example of a string is "Jack and Jill went up a hill".
+A command and its arguments are collectively referred to as a statement, so
+is an example of a statement.
+That's probably more than enough terminology for now.
+Here is another program:
+And here is the output when the program is run:
+As you can see, Python can turn your six hundred dollar computer into a 2 dollar calculator.
+In this example, the print command is followed by two arguments, with each of the arguments separated by a comma.  So with the first line of the program
+The first argument is the string "2 + 2 is" and the second argument is the mathematical expression 2 + 2, which is commonly referred to as an expression.
+What is important to note is that a string is printed as is (the string is what is within the double quotes but doesn't include the double quotes themselves. So the string is printed without the enclosing double quotes.) But an expression is evaluated, (in other words, converted) to its actual value.
+Python has six basic operations for numbers: 
+Notice that division follows the rule, if there are no decimals to start with, there will be no decimals to end with. The following program shows this:
+With the output:
+Notice how Python gives different answers for some problems depending on whether or not decimal values are used.  
+The order of operations is the same as in math:
+So use parentheses to structure your formulas when needed.
+Often in programming you are doing something complicated and may not in the future remember what you did.  When this happens, the program should probably be commented.  A comment is a note to you and other programmers explaining what is happening.  For example:
+Which outputs
+Notice that the comment starts with a hash: #. Comments are used to communicate with others who read the program and your future self to make clear what is complicated.
+Note that any text can follow a comment, and that when the program is run, the text after the # through to the end of that line is ignored. The # does not have to be at the beginning of a new line:
+Each chapter (eventually) will contain examples of the programming features introduced in the chapter.  You should at least look over them and see if you understand them.  If you don't, you may want to type them in and see what happens.  Mess around with them, change them and see what happens.  
+Denmark.py
+Output:
+School.py
+Output:
+
+1. Write a program that prints your full name and your birthday as separate strings.
+2. Write a program that shows the use of all 6 math operations.
+
+Now I feel it is time for a really complicated program.  Here it is:
+(user response: using Linux and Geany editor...only option shown was 'user_return'...output was correct. However, when manually typed 'user_reply' also worked correctly, even though not displayed as a option in Geany...what is the functional difference between these two?)
+When I ran it, here is what my screen showed:
+Note: After running the code by pressing F5, the Python shell will only give output:
+You need to enter your name in the Python shell, and then press Enter to get the rest of the output.
+Of course when you run the program your screen will look different
+because of the raw_input() statement. When you ran the program
+you probably noticed (you did run the program, right?) that you had to
+type in your name and then press Enter. Then the program printed out
+some more text and also your name. This is an example of input.  The
+program reaches a certain point and then waits for the user to input
+some data that the program can use later.
+Of course, getting information from the user would be useless if we didn't have anywhere to put that information and this is where variables come in.  In the previous program, user_reply is a variable.  Variables are like a box that can store some piece of data.  Here is a program to show examples of variables:
+And here is the output:
+The variables in the above program are a, b23, first_name, b, and c.  A variable in Python can store any type of data - in this example we stored some strings (e.g. "Bill") and some numbers (e.g. 432).
+Note the difference between strings and variable names.  Strings are marked with quotation marks, which tells the computer "don't try to understand, just take this text as it is":
+This would print the text:
+as-is.  Variable names are written without any quotation marks and instruct the computer "use the value I've previously stored under this name":
+which would print (after the previous example):
+Okay, so we have these boxes called variables and also data that can go into the variable.  The computer will see a line like first_name = "Bill" and it reads it as "Put the string Bill into the box (or variable) first_name". Later on it sees the statement c = a + b and it reads it as "put the sum of a + b or 123.4 + 432 which equals 555.4 into c". The right hand side of the statement (a + b) is evaluated and the result is stored in the variable on the left hand side (c). This is called assignment, and you should not confuse the assignment equal sign (=) with "equality" in a mathematical sense here (that's what == will be used for later).
+Here is another example of variable usage:
+And of course here is the output:
+Even if it is the same variable on both sides the computer still reads it as "First find out the data to store and then find out where the data goes".
+One more program before I end this chapter:
+The output I got was:
+Notice that number was gotten with input() while text was gotten with raw_input(). raw_input() returns a string while input() returns a number. When you want the user to type in a number use input() but if you want the user to type in a string use raw_input().
+The second half of the program uses type() which tells what a
+variable is. Numbers are of type int or float, which are
+short for integer and floating point (mostly used for decimal numbers), respectively. Text strings are of type str, short for string. Integers and floats can be worked on by mathematical functions, strings cannot. Notice how when python
+multiplies a number by an integer the expected thing happens. However
+when a string is multiplied by an integer the result is that multiple
+copies of the string are produced (i.e., text * 2 = HelloHello).
+The operations with strings do different things than 
+operations with numbers.  Here are some interactive mode examples
+to show that some more.
+This could also be done as a program:
+Here is the list of some string operations:
+Rate_times.py
+Sample runs:
+Area.py
+Sample runs:
+temperature.py
+Sample runs:
+Write a program that gets 2 string variables and 2 integer variables
+from the user, concatenates (joins them together with no spaces) and
+displays the strings, then multiplies the two numbers on a new line.
+Another Solution
+
+Here we present our first control structure.  Ordinarily, the computer starts with the first line and then goes down from there.  However, control structures change the order of how the statements are executed and/or decide if a certain statement(s) will be run.  Here's the source for a program that uses the while control structure:
+And here is the extremely exciting output: 
+And you thought it couldn't get any worse after turning your computer into a five dollar calculator?
+So what does the program do?  First, it sees the line a = 0 which tells the computer to sets a to the value of zero. Then, it sees while a < 10: which tells the computer to check whether a < 10. The first time the computer sees this while statement, a is equal to zero, which means a is less than 10, so the computer proceeds to run the succeeding indented, or tabbed in, statements. After the last statement, print (a), within this while "loop" is run, the computer goes back up again to the while a < 10 to check the current value of a. In other words, as long as a is less than ten, the computer will run the tabbed in statements. With a = a + 1 repeatedly adding one to a, eventually the while loop makes a equal to ten, and makes the a < 10 no longer true. Reaching that point, the program will not run the indented lines any longer.
+Always remember to put a colon ":" after the "while" statement!
+Here is another example of the use of while:
+Notice how print 'Total Sum =', s is only run at the end. The while statement only affects the lines that are indented with whitespace. The != means "does not equal" so "while a != 0:" means: "until a is zero, run the tabbed statements that follow."  
+Now that we have while loops, it is possible to have programs that run forever. An easy way to do this is to write a program like this:
+The "==" operator is used to test equality of the expressions on the two sides of the operator, just as "<" was used for "less than" before (you will get a complete list of all comparison operators in the next chapter).
+This program will output Help, I'm stuck in a loop. until the heat death of the universe or until you stop it, because 1 will forever be equal to 1.  The way to stop it is to hit the Control (or Ctrl) button and C (the letter) at the same time.  This will kill the program.  (Note: sometimes you will have to hit enter after the Control-C.)
+Fibonacci.py
+Output:
+Note the output on a single line by use of a comma at the end of the print statement.
+Password.py
+Sample run:
+Write a program that asks the user for a Login Name and password.  Then when they type "lock", they need to type in their name and password to unlock the program.
+Write a program that asks the user for a Login Name and password.  Then when they type "lock", they need to type in their name and password to unlock the program.
+If you would like the program to run continuously, just add a while 1 == 1: loop around the whole thing.
+You will have to indent the rest of the program when you add this at the top of the code, but don't worry, you don't have to do it manually for each line! Just highlight everything you want to indent and click on "Indent" under "Format" in the top bar of the python window. Note that you can use empty strings like this: "".
+Another way of doing this could be:
+Notice the or in while (name != "user") or (password != "pass"):, which we haven't yet introduced. You can probably figure out how it works.
+This method, although a bit more crude also works. Notice it uses the as of yet un-introduced if function.
+
+As always I believe I should start each chapter with a warm-up typing exercise, so here is a short program to compute the absolute value of a number:
+Here is the output from the two times that I ran this program:
+So what does the computer do when it sees this piece of code?  First it prompts the user for a number with the statement "n = input("Number? ")".  Next it reads the line "if n < 0:". If n is less than zero Python runs the line "print('The absolute value of', int(n), 'is: ', abs(-n))". Otherwise it runs the line "print('The absolute value of', int(n), 'is: ', abs(n))".  
+More formally Python looks at whether the expression n < 0 is true or false.  An if statement is followed by an indented block of statements that are run when the expression is true.  Optionally after the if statement is an else statement and another indented block of statements.  This second block of statements is run if the expression is false.  
+There are a number of different tests that an expression can have.  Here is a table of all of them:
+Another feature of the  if command is the  elif  statement.  It stands for else if and means if the original  if statement is false but the  elif part is true, then do the elif part. And if neither the if or elif expressions are true, then do what's in the else block. Here's an example:
+and the output:
+Notice how the elif a <= 7 is only tested when the if statement fails to be true. There can be more than one elif expression, allowing multiple tests to be done in a single if statement.
+And the output
+High_low.py
+Sample run:
+even.py
+Sample runs:
+average1.py
+Sample runs:
+average2.py
+Sample runs:
+Modify the higher or lower program from this section to keep track of how many times the user has entered the wrong number.  If it is more than 3 times, print
+"That must have been complicated."
+Write a program that asks for two numbers.  If the sum of the numbers 
+is greater than 100, print "That is a big number."
+Write a program that asks the user their name, if they enter your name
+say "That is a nice name", if they enter "John Cleese" or "Michael
+Palin", tell them how you feel about them ;), otherwise tell them "You
+have a nice name."
+
+By now if you have been messing around with the programs you have probably found that sometimes the program does something you didn't want it to do.  This is fairly common.  Debugging is the process of figuring out what the computer is doing and then getting it to do what you want it to do.  This can be tricky.  I once spent nearly a week tracking down and fixing a bug that was caused by someone putting an x where a y should have been.  
+This chapter will be more abstract than previous chapters.
+The first thing to do (this sounds obvious) is to figure out what the
+program should be doing if it is running correctly.  Come up with some
+test cases and see what happens.  For example, let's say I have a
+program to compute the perimeter of a rectangle (the sum of the length
+of all the edges).  I have the following test cases:
+I now run my program on all of the test cases and see if the program does what 
+I expect it to do.  If it doesn't then I need to find out what the computer is
+doing.
+More commonly some of the test cases will work and some will not.  If that is the case you should try and figure out what the working ones have in common. 
+For example here is the output for a perimeter program (you get to see the code in a minute):
+Notice that it didn't work for the first two inputs, it worked for the next
+two and it didn't work on the last one.  Try and figure out what is in common 
+with the working ones.  Once you have some idea what the problem is finding the
+cause is easier.  With your own programs you should try more test cases if you need them.
+The next thing to do is to look at the source code.  One of the most important things to do while programming is reading source code.  The primary way to do this is code walkthroughs.  
+A code walkthrough starts at the first line, and works its way down until the program is done.  While loops and if statements mean that some lines may never be run and some lines are run many times.  At each line you figure out what Python has done.
+Lets start with the simple perimeter program.  Don't type it in, you are going to read it, not run it.  The source code is:
+The next program we will do a code walkthrough for is a program that is supposed to print out 5 dots on the screen.  However, this is what the program is outputting:
+And here is the program:
+This program will be more complex to walkthrough since it now has indented portions (or control structures).  Let us begin.
+You need to figure out what the program is doing.  You need to figure out what the program should do.  Figure out what the difference between the two is.  Debugging is a skill that has to be practiced to be learned. If you can't figure it out after an hour, take a break, talk to someone about the problem or contemplate the lint in your navel.  Come back in a while and you will probably have new ideas about the problem.  Good luck.
+
+To start off this chapter I am going to give you an example of what you could do but shouldn't (so don't type it in):
+with the output being:
+The program seems a little repetitive. Programmers hate to repeat things -- that's what computers are for, after all! (Note also that finding the absolute value changed the value of the variable, which is why it is printing out 23, and not -23 in the output.) Fortunately Python allows you to create functions to remove duplication.  Here is the rewritten example:    
+with the output being:
+The key feature of this program is the def statement. The def keyword
+(short for "define") starts a function definition. "def" is followed by the name of the function "absolute_value". Next, comes the single function parameter named, "n". A parameter holds a value passed into the function from the program that "calls" the function. Parameters of a function in the def statement, must be enclosed within a parenthesis. The value that is passed to a function parameter is called an argument. So for now, a parameter and argument points to the same thing. The block of indented statements after the ":" are then executed whenever the function is used. The statements within the function continue to be run until either the indented statements end, or a "return" statement is encountered. The return statement returns a value back to the place where the function was called in the calling program.
+Notice how the values of a and b are not changed. Functions can be used to repeat tasks that don't return values. Here are some examples:
+with output being:
+That example shows some more stuff that you can do with functions. Notice that you can use one or more parameters, or none at all. Notice also that a function doesn't necessarily need to "return" a value, so a return statement is optional.
+When eliminating repeated code, you often notice that variables are repeated in the code. In Python, these are dealt with in a special way. So far, all variables we have seen are global variables. Functions work with a special type of variables called local variables. These variables only exist within the function and only while the function is running.  When a local variable has the same name as another variable (such as a global variable), the local variable hides the other. Sound confusing?  Well, these next examples (which are a bit contrived) should help clear things up.
+When run, we will receive an output of:
+Variable assignments inside a function do not override global variables, they exist only inside the function.  Even though a was assigned a new value inside the function, this newly assigned value exists only within the print_func function. After the function finishes running and the value of an a variable is printed again, we see the value assigned to the global a variable being printed.
+The output is:
+In this example the variables a_var, b_var, and d_var are all local variables when they are inside the function a_func. After the statement return b_var + 10 is run, they all cease to 
+exist. The variable a_var is "automatically" a local variable since it is a parameter named by the function definition. The variables b_var and d_var are local variables since they appear on the left of an equals sign within the function in the statements: b_var = 100 + a_var and d_var = 2 * a_var.
+Inside of the function a_var has no value assigned to it. When the function is called with c_var = a_func(b_var), 15 is assigned to a_var since at that point in time b_var is 15, making the 
+call to the function a_func(15).  This ends up setting the value of a_var to 15 when it is inside of a_func function.
+As you can see, once the function finishes running, the local variables a_var and b_var that had hidden the global variables of the same name are gone. Then the statement print "a_var = ", a_var prints the 
+value 10 rather than the value 15 since the local variable that hid the global variable is gone.  
+Another thing to notice is the NameError that happens at the end. This appears since the variable d_var no longer exists since a_func finished.  All the local variables are deleted when the function
+exits. If you want to get something back from a function, then you will have to use return statement within the function.
+One last thing to notice is that the value of c_var remains unchanged inside a_func since it is not a parameter and it never appears on the left of an equals sign inside of the function a_func. When a global variable is accessed inside a function, the function uses only value of the global variable but it cannot change the value assigned to the global variable outside the function.
+Functions allow local variables that exist only inside the function and can hide other variables that are outside the function.
+temperature2.py
+Sample Run:
+area2.py
+Sample Run:
+Rewrite the area2.py program from the Examples above to have a separate function for the area of a square, the area of a rectangle, and the area of a circle (3.14 * radius ** 2). This program should include a menu interface.
+Rewrite the area2.py program from the Examples above to have a separate function for the area of a square, the area of a rectangle, and the area of a circle (3.14 * radius ** 2). This program should include a menu interface.
+
+Some people find this section useful, and some find it confusing. If you find it confusing you can skip it (or just look at the examples.)  Now we will do a walk through for the following program:
+Basically this program creates a positive integer multiplication function
+(that is far slower than the built in multiplication function) and then
+demonstrates this function with a use of the function. This program demonstrates the use of recursion, that is a form of iteration (repetition) in which there is a function that repeatedly calls itself until an exit condition is satisfied. It uses repeated additions to give the same result as mutiplication: e.g. 3 + 3 (addition) gives the same result as 3 * 2 (multiplication).
+RUN 1
+RUN 2
+
+RUN 3
+This is how the whole thing works:
+Should you still have problems with this example, look at the process backwards. What is the last
+step that happens? We can easily make out that the result of mult(3, 0) is
+0. Since b is 0, the function mult(3, 0) 
+will return 0 and stop. 
+So what does the previous step do? mult(3, 1) does not return 0
+because b is not 0. So the next lines are executed:
+rest = mult (a, b - 1), which is rest = mult (3, 0), 
+which is 0 as we just worked out. So now the variable rest is set to 0.
+The next line adds the value of rest to a, and since a is 3 and rest
+is 0, the result is 3.
+Now we know that the function mult(3, 1) returns 3. But we want to
+know the result of mult(3,2). Therefore, we need to jump back to the
+start of the program and execute it one more round: 
+mult(3, 2) sets rest to the result of mult(3, 1). We know
+from the last round that this result is 3. Then value calculates as a + rest,
+i. e. 3 + 3. Then the result of 3 * 2 is printed as 6. 
+The point of this example is that the function mult(a, b) starts itself inside
+itself. It does this until b reaches 0 and then calculates the result as explained above.
+Programming constructs of this kind are called recursive and probably the most intuitive definition of recursion is:
+These last two sections were recently written.  If you have any
+comments, found any errors or think I need more/clearer explanations
+please email.  I have been known in the past to make simple things
+incomprehensible.  If the rest of the tutorial has made sense, but this
+section didn't, it is probably my fault and I would like to know.
+Thanks.
+factorial.py
+Output:
+countdown.py
+Output:
+Commented_mult.py
+Commented_factorial.py
+Commented_countdown.py
+
+You have already seen ordinary variables that store a single value.  However other variable types can hold more than one value.  The simplest type is called a list.  Here is an example of a list being used:
+and an output example:
+In this example the months is a list.  months is defined with the lines  months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', and 'August', 'September', 'October', 'November', 'December'] (note that a \ could also be used to split a long line, but that is not necessary in this case because Python is intelligent enough to recognize that everything within brackets belongs together).  The [ and ] start and end the list with commas (,) separating the list items.  The list is used in months[which_one - 1].  A list consists of items that are numbered starting at 0.  In other words if you wanted January you would use months[0].  Give a list a number and it will return the value that is stored at that location.
+The statement  if 1 <= which_one <= 12: will only be true if  which_one is between one and twelve inclusive (in other words it is what you would expect if you have seen that in algebra).
+Lists can be thought of as a series of boxes. Each box has a different value. For example, the boxes created by  demolist = ['life', 42, 'the universe', 6, 'and', 9] would look like this:
+Each box is referenced by its number so the statement demolist[0] would get 'life', demolist[1] would get 42 and so on up to demolist[5] getting 9.
+The next example is just to show a lot of other stuff lists can do (for once I don't expect you to type it in, but you should probably play around with lists until you are comfortable with them.).  Here goes:
+The output is:
+This example uses a whole bunch of new functions.  Notice that you can
+just print a whole list.  Next the append function is used
+to add a new item to the end of the list.  len returns how many
+items are in a list.  The valid indexes (as in numbers that can be
+used inside of the []) of a list range from 0 to len - 1. The
+index function tells where the first location of an item is
+located in a list.  Notice how demolist.index(42) returns 1, and
+when demolist[1] is run it returns 42.  The line # Next we will loop through the list is a just a reminder to the programmer (also called a comment). Python will ignore any lines that start with a #.  Next the lines:
+create a variable c, which starts at 0 and is incremented until it reaches the last index of the list.  Meanwhile the print statement prints out each element of the list. The del command can be used to remove a given element in a list.  The next few lines use the in operator to test if an element is in or is not in a list. The sort function sorts the list. This is useful if you need a
+list in order from smallest number to largest or alphabetical.  Note
+that this rearranges the list. In summary, for a list, the following operations occur:
+This next example uses these features in a more useful way:
+And here is part of the output:
+That was a long program.  Let's take a look at the source code. The line namelist = [] makes the variable namelist a list with no items (or elements).  The next important line is while menu_item != 9:.  This line starts a loop that allows the menu system for this program.  The next few lines display a menu and decide which part of the program to run.
+The section
+goes through the list and prints each name.  len(namelist) tells how many items are in the list.  If len returns 0, then the list is empty.
+Then, a few lines later, the statement namelist.append(name) appears.  It uses the append function to add an item to the end of the list.  Jump down another two lines, and notice this section of code:
+Here the index function is used to find the index value that will be used later to remove the item.  del namelist[item_number] is used to remove a element of the list.   
+The next section
+uses index to find the item_number and then puts new_name where the old_name was.
+Congratulations, with lists under your belt, you now know enough of the language
+that you could do any computations that a computer can do (this is technically known as Turing-Completeness).  Of course, there are still many features that
+are used to make your life easier.
+test.py
+The values True and False point to 1 and 0, respectively. They are often used in sanity checks, loop conditions etc. You will learn more about this a little bit later (chapter Boolean Expressions).
+Sample Output:
+Expand the test.py program so it has a menu giving the option of taking
+the test, viewing the list of questions and answers, and an option to
+quit.  Also, add a new question to ask, "What noise does a truly
+advanced machine make?" with the answer of "ping".
+Expand the test.py program so it has menu giving the option of taking
+the test, viewing the list of questions and answers, and an option to
+quit.  Also, add a new question to ask, "What noise does a truly
+advanced machine make?" with the answer of "ping".
+
+And here is the new typing exercise for this chapter:
+and the ever-present output:
+The output looks awfully familiar but the program code looks different.  The first line uses the range function.  The range function uses two arguments like this range(start, finish).  start is the first number that is produced.  finish is one larger than the last number.  Note that this program could have been done in a shorter way:
+Here are some examples to show what happens with the range command:
+The next line for count in onetoten: uses the for control structure.  A for control structure looks like for variable in list:.  list is gone through starting with the first element of the list and going to the last.  As for goes through each element in a list it puts each into variable.  That allows variable to be used in each successive time the for loop is run through.  Here is another example (you don't have to type this) to demonstrate:
+The output is:
+Notice how the for loop goes through and sets item to each element in the list. Notice how if you don't want print to go to the next line add a comma at the end of the statement (i.e. if you want to print something else on that line).  So, what is for good for?  The first use is to go through all the elements of a list and do something with each of them.  Here's a quick way to add up all the elements:
+with the output simply being:
+Or you could write a program to find out if there are any duplicates in a list like this program does:
+and for good measure:
+Okay, so how does it work?  Here is a special debugging version to help you understand (you don't need to type this in):
+with the output being:
+The reason I put so many print statements in the code was so that you can see what is happening in each line.  (By the way, if you can't figure out why a program is not working, try putting in lots of print statements so you can see what is happening.)  First the program starts with a boring old list.  Next the program sorts the list.  This is so that any duplicates get put next to each other.  The program then initializes a prev(ious) variable.  Next the first element of the list is deleted so that the first item is not incorrectly thought to be a duplicate.  Next a for loop is gone into.  Each item of the list is checked to see if it is the same as the previous.  If it is a duplicate was found.  The value of prev is then changed so that the next time the for loop is run through prev is the previous item to the current.  Sure enough, the 7 is found to be a duplicate.  (Notice how \t is used to print a tab.)  
+The other way to use for loops is to do something a certain number of times.  Here is some code to print out the first 9 numbers of the Fibonacci series:
+with the surprising output:
+Everything that can be done with for loops can also be done with while loops but for loops give an easy way to go through all the elements in a list or to do something a certain number of times.
+Here is a little example of boolean expressions (you don't have to type it in):
+With the output being:
+What is going on?  The program consists of a bunch of funny looking print statements.  Each print statement prints a number and an expression.  The number is to help keep track of which statement I am dealing with.  Notice how each expression ends up being either False or True.  In Python, false can also be written as 0 and true as 1.  
+The lines:
+print out a True and a False respectively just as expected since the first is true and the second is false.  The third print, print 3, a == 6 and b == 7, is a little different.  The operator and means if both the statement before and the statement after are true then the whole expression is true otherwise the whole expression is false.  The next line, print 4, a == 7 and b == 7, shows how if part of an and expression is false, the whole thing is false.  The behavior of and can be summarized as follows:
+Notice that if the first expression is false Python does not check the second expression since it knows the whole expression is false.  
+The next line, print 5, not a == 7 and b == 7, uses the not operator.  not just gives the opposite of the expression. (The expression could be rewritten as  print 5, a != 7 and b == 7).  Here is the table:
+The two following lines, print 6, a == 7 or b == 7 and print 7, a == 7 or b == 6, use the or operator.  The or operator returns true if the first expression is true, or if the second expression is true or both are true.  If neither are true it returns false.  Here's the table:
+Notice that if the first expression is true Python doesn't check the second expression since it knows the whole expression is true.  This works since or is true if at least one half of the expression is true.  The first part is true so the second part could be either false or true, but the whole expression is still true.
+The next two lines, print 8, not (a == 7 and b == 6) and print 9, not a == 7 and b == 6, show that parentheses can be used to group expressions and force one part to be evaluated first.  Notice that the parentheses changed the expression from false to true. This occurred since the parentheses forced the not to apply to the whole expression instead of just the a == 7 portion.
+Here is an example of using a boolean expression:
+And here is the output:
+This program works by continuing to check for match while count < len(copy) and copy[count] is not equal to prev.  When either count is greater than the last index of copy or a match has been found the and is no longer true so the loop exits.  The if simply checks to make sure that the while exited because a match was found.  
+The other "trick" of and is used in this example.  If you look at the table for and notice that the third entry is "false and won't check".   If count >= len(copy) (in other words count < len(copy) is false) then copy[count] is never looked at.  This is because Python knows that if the first is false then they can't both be true.  This is known as a short circuit and is useful if the second half of the and will cause an error if something is wrong.  I used the first expression (count < len(copy)) to check and see if count was a valid index for copy.  (If you don't believe me remove the matches "Jill" and "Life", check that it still works and then reverse the order of count < len(copy) and copy[count] != prev to copy[count] != prev and count < len(copy).)
+Boolean expressions can be used when you need to check two or more different things at once.
+A common mistake for people new to programming is a misunderstanding of the way that boolean operators works, which stems from the way the python interpreter reads these expressions.  For example, after initially learning about "and " and "or" statements, one might assume that the expression x == ('a' or 'b') would check to see if the variable x was equivalent to one of the strings 'a' or 'b'.  This is not so.  To see what I'm talking about, start an interactive session with the interpreter and enter the following expressions:
+And this will be the unintuitive result:
+At this point, the and and or operators seem to be broken.  It doesn't make sense that, for the first two expressions, 'a' is equivalent to 'a' or 'b' while 'b' is not.  Furthermore, it doesn't make any sense that 'b' is equivalent to 'a' and 'b'.  After examining what the interpreter does with boolean operators, these results do in fact exactly what you are asking of them, it's just not the same as what you think you are asking.
+When the Python interpreter looks at an or expression, it takes the first statement and checks to see if it is true. If the first statement is true, then Python returns that object's value without checking the second statement.  This is because for an or expression, the whole thing is true if one of the values is true; the program does not need to bother with the second statement. On the other hand, if the first value is evaluated as false Python checks the second half and returns that value. That second half determines the truth value of the whole expression since the first half was false.  This "laziness" on the part of the interpreter is called "short circuiting" and is a common way of evaluating boolean expressions in many programming languages.
+Similarly, for an and expression, Python uses a short circuit technique to speed truth value evaluation.  If the first statement is false then the whole thing must be false, so it returns that value.  Otherwise if the first value is true it checks the second and returns that value.
+One thing to note at this point is that the boolean expression returns a value indicating True or False, but that Python considers a number of different things to have a truth value assigned to them.  To check the truth value of any given object x, you can use the function bool(x) to see its truth value.  Below is a table with examples of the truth values of various objects:
+Now it is possible to understand the perplexing results we were getting when we tested those boolean expressions before.  Let's take a look at what the interpreter "sees" as it goes through that code:
+First case:
+Second case:
+Third case:
+Fourth case:
+So Python was really doing its job when it gave those apparently bogus results.  As mentioned previously, the important thing is to recognize what value your boolean expression will return when it is evaluated, because it isn't always obvious.  
+Going back to those initial expressions, this is how you would write them out so they behaved in a way that you want:
+When these comparisons are evaluated they return truth values in terms of True or False, not strings, so we get the proper results.
+password1.py
+Sample runs
+Write a program that has a user guess your name, but they only get 3 chances 
+to do so until the program quits.
+Write a program that has a user guess your name, but they only get 3 chances 
+to do so until the program quits.
+This chapter is about dictionaries. If you open a dictionary, you should notice every entry consists of two parts, a word and the word's definition. The word is the key to finding out what a word means, and what the word means is considered the value for that key. In Python, dictionaries have keys and values. Keys are used to find values. Here is an example of a dictionary in use:
+And here is my output:
+This program is similar to the name list from the earlier chapter on lists (note that lists use indexes and dictionaries don't).  Here's how the program works: 
+A recap: Dictionaries have keys and values.  Keys can be strings or
+numbers.  Keys point to values.  Values can be any type of variable
+(including lists or even dictionaries (those dictionaries or lists of
+course can contain dictionaries or lists themselves (scary right? :-)
+)).  Here is an example of using a list in a dictionary:
+and here is a sample output:
+Here's how the program works.  Basically the variable students is
+a dictionary with the keys being the name of the students and the
+values being their grades.  The first two lines just create two lists.
+The next line students = {'#Max': max_points} creates a new
+dictionary with the key {#Max} and the value is set to be [25, 25, 50, 25, 100], since thats what max_points was when the assignment is made (I use the key #Max since # is sorted
+ahead of any alphabetic characters).  Next print_menu is
+defined.  Next the print_all_grades function is defined in the
+lines:
+Notice how first the keys are gotten out of the students dictionary with the keys function in the line keys = students.keys().  keys is a list so all the functions for lists can be used on it.  Next the keys are sorted in the line keys.sort() since it is a list.  for is used to go through all the keys. The grades are stored as a list inside the dictionary so the assignment grades = students[x] gives grades the list that is stored at the key x.  The function print_grades just prints a list and is defined a few lines later.
+The later lines of the program implement the various options of the menu.  The line students[name] = [0] * len(max_points) adds a student to the key of their name.  The notation [0] * len(max_points) just creates a list of 0's that is the same length as the max_points list.  
+The remove student entry just deletes a student similar to the telephone book example.  The record grades choice is a little more complex.  The grades are retrieved in the line grades = students[name] gets a reference to the grades of the student name.  A grade is then recorded in the line grades[which] = grade.  You may notice that grades is never put back into the students dictionary (as in no students[name] = grades).  The reason for the missing statement is that grades is actually another name for students[name] and so changing grades changes student[name].  
+Dictionaries provide a easy way to link keys to values.  This can be used to easily keep track of data that is attached to various keys.
+Here's this chapter's typing exercise (name it cal.py). import actually looks for a file named calendar.py and reads it in.  If the file is named calendar.py and it sees an "import calendar" it tries to read in itself which works poorly at best.)):
+And here is part of the output I got:
+(I skipped some of the output, but I think you get the idea.) So what does the program do?  The first line import calendar uses a new command import.  The command import loads a module (in this case the calendar module).  To see the commands available in the standard modules either look in the library reference for python (if you downloaded it) or go to http://docs.python.org/library/.  If you look at the documentation for the calendar module, it lists a function called prcal that prints a calendar for a year.  The line calendar.prcal(year) uses this function.  In summary to use a module import it and then use module_name.function for functions in the module.  Another way to write the program is:
+This version imports a specific function from a module.  Here is another program that uses the Python Library (name it something like clock.py) (press Ctrl and the 'c' key at the same time to terminate the program):
+With some output being:
+The output is infinite of course so I canceled it (or the output at least continues until Ctrl+C is pressed).  The program just does a infinite loop (True is always true, so while True: goes forever) and each time checks to see if the time has changed and prints it if it has.  Notice how multiple names after the import statement are used in the line from time import time, ctime.  
+The Python Library contains many useful functions.  These functions give your programs more abilities and many of them can simplify programming in Python.
+Rewrite the High_low.py program from section Decisions to use a random integer between 0 and 99 instead of the hard-coded 78. Use the Python documentation to find an appropriate module and function to do this.
+Rewrite the High_low.py program from section Decisions to use an random integer between 0 and 99 instead of the hard-coded 78. Use the Python documentation to find an appropriate module and function to do this.
+
+We have already seen lists and how they can be used.   Now that you have some more background I will go into more detail about lists.  First we will look at more ways to get at the elements in a list and then we will talk about copying them.  
+Here are some examples of using indexing to access a single element of a list:
+All those examples should look familiar to you.  If you want the first item in the list just look at index 0.  The second item is index 1 and so on through the list.  However what if you want the last item in the list?  One way could be to use the len() function like some_numbers[len(some_numbers) - 1].  This way works since the len() function always returns the last index plus one.  The second from the last would then be some_numbers[len(some_numbers) - 2].  There is an easier way to do this.  In Python the last item is always index -1.  The second to the last is index -2 and so on.  Here are some more examples:
+Thus any item in the list can be indexed in two ways: from the front and from the back.
+Another useful way to get into parts of lists is using slicing.  Here is another example to give you an idea what they can be used for:
+Slicing is used to return part of a list.  The slicing operator is in the form things[first_index:last_index].  Slicing cuts the list before the first_index and before the last_index and returns the parts inbetween.  You can use both types of indexing:
+Another trick with slicing is the unspecified index.  If the first index is not specified the beginning of the list is assumed.  If the last index is not specified the whole rest of the list is assumed.  Here are some examples:
+Here is a (HTML inspired) program example (copy and paste in the poem definition if you want):
+with the output being:
+The get_bold() function takes in a list that is broken into words
+and tokens.  The tokens that it looks for are <B> which starts
+the bold text and </B> which ends bold text. The function
+get_bold() goes through and searches for the start and end
+tokens.
+The next feature of lists is copying them.  If you try something simple like:
+This probably looks surprising since a modification to b
+resulted in a being changed as well.  What happened is that the
+statement b = a makes b a reference to a.
+This means that b can be thought of as another name for a.
+Hence any modification to b changes a as well.  However
+some assignments don't create two names for one list:
+In this case b is not a reference to a since the
+expression a * 2 creates a new list. Then the statement
+b = a * 2 gives b a reference to a * 2 rather than a
+reference to a.  All assignment operations create a reference.
+When you pass a list as an argument to a function you create a
+reference as well.  Most of the time you don't have to worry about
+creating references rather than copies.  However when you need to make
+modifications to one list without changing another name of the list
+you have to make sure that you have actually created a copy.
+There are several ways to make a copy of a list.  The simplest that
+works most of the time is the slice operator since it always makes a
+new list even if it is a slice of a whole list:
+Taking the slice [:] creates a new copy of the list. However it
+only copies the outer list.  Any sublist inside is still a references
+to the sublist in the original list.  Therefore, when the list
+contains lists, the inner lists have to be copied as well.  You could
+do that manually but Python already contains a module to do it.  You
+use the deepcopy function of the copy module:
+First of all notice that a is a list of lists.  Then notice
+that when b[0][1] = 10 is run both a and b are
+changed, but c is not.  This happens because the inner arrays
+are still references when the slice operator is used.  However with
+deepcopy c was fully copied.
+So, should I worry about references every time I use a function or
+=?  The good news is that you only have to worry about
+references when using dictionaries and lists.  Numbers and strings
+create references when assigned but every operation on numbers and
+strings that modifies them creates a new copy so you can never modify
+them unexpectedly.  You do have to think about references when you are
+modifying a list or a dictionary.
+By now you are probably wondering why are references used at all?  The
+basic reason is speed.  It is much faster to make a reference to a
+thousand element list than to copy all the elements.  The other reason
+is that it allows you to have a function to modify the inputted list
+or dictionary.  Just remember about references if you ever have some
+weird problem with data being changed when it shouldn't be.
+And now presenting a cool trick that can be done with strings:
+And the output is:
+What these programs demonstrate is that strings are similar to lists in several ways.  The shout() function shows that for loops can be used with strings just as they can be used with lists.  The middle procedure shows that that strings can also use the len() function and array indexes and slices.  Most list features work on strings as well.
+The next feature demonstrates some string specific features:
+with the output being:
+This works because the computer represents the characters of a string as numbers from 0 to 255.  Python has a function called ord() (short for ordinal) that returns a character as a number.  There is also a corresponding function called chr() that converts a number into a character.  With this in mind the program should start to be clear.  The first detail is the line: if 'a' <= character <= 'z': which checks to see if a letter is lower case.  If it is then the next lines are used.  First it is converted into a location so that a = 0, b = 1, c = 2 and so on with the line: location = ord(character) - ord('a').  Next the new value is found with new_ascii = location + ord('A').  This value is converted back to a character that is now upper case.
+Now for some interactive typing exercise:
+If you haven't guessed already the function repr() can convert a integer to a string and the function int() can convert a string to an integer. The function float() can convert a string to a float.  The repr() function returns a printable representation of something. `...` converts almost everything into a string, too. Here are some examples of this:
+The int() function tries to convert a string (or a float) into a integer.  There is also a similar function called float() that will convert a integer or a string into a float.  Another function that Python has is the eval() function.  The eval() function takes a string and returns data of the type that python thinks it found.  For example:
+If you use the eval() function you should check that it returns the type that you expect.
+One useful string function is the split() method. Here's an example:
+Notice how split() converts a string into a list of strings.  The string is split by whitespace by default or by the optional argument (in this case a comma).
+You can also add another argument that tells split() how many times the separator will be used to split the text. For example:
+Strings can be cut into pieces — in the same way as it was shown for lists in the previous chapter — by using the slicing "operator" [:]. The slicing operator works in the same way as before: text[first_index:last_index] (in very rare cases there can be another colon and a third argument, as in the example shown below).
+In order not to get confused by the index numbers, it is easiest to see them as clipping places, possibilities to cut a string into parts. Here is an example, which shows the clipping places (in yellow) and their index numbers (red and blue) for a simple text string:
+
+
+Note that the red indexes are counted from the beginning of the string and the blue ones from the end of the string backwards. (Note that there is no blue -0, which could seem to be logical at the end of the string. Because -0 == 0, (-0 means "beginning of the string" as well.)  Now we are ready to use the indexes for slicing operations:
+
+
+text[1:4] gives us all of the text string between clipping places 1 and 4, "TRI". If you omit one of the [first_index:last_index] arguments, you get the beginning or end of the string as default: text[:5] gives "STRIN". For both first_index and last_index we can use both the red and the blue numbering schema: text[:-1] gives the same as text[:5], because the index -1 is at the same place as 5 in this case. If we do not use an argument containing a colon, the number is treated in a different way: text[2] gives us one character following the second clipping point, "R". The special slicing operation text[:] means "from the beginning to the end" and produces a copy of the entire string (or list, as shown in the previous chapter).
+Last but not least, the slicing operation can have a second colon and a third argument, which is interpreted as the "step size": text[::-1] is text from beginning to the end, with a step size of -1. -1 means "every character, but in the other direction". "STRING" backwards is "GNIRTS" (test a step length of 2, if you have not got the point here).
+All these slicing operations work with lists as well. In that sense strings are just a special case of lists, where the list elements are single characters. Just remember the concept of clipping places, and the indexes for slicing things will get a lot less confusing.
+The output is:
+Here is a simple example of file I/O (input/output):
+The output and the contents of the file test.txt are:
+Notice that it wrote a file called test.txt in the directory that you ran the program from.  The \n in the string tells Python to put a newline where it is.  
+A overview of file I/O is:
+The first step is to get a file object.  The way to do this is to use the open function.  The format is file_object = open(filename, mode)  where file_object is the variable to put the file object, filename is a string with the filename, and mode is "r" to read a file or "w" to write a file (and a few others we will skip here).  Next the file objects functions can be called.  The two most common functions are read and write.  The write function adds a string to the end of the file.  The read function reads the next thing in the file and returns it as a string.  If no argument is given it will return the whole file (as done in the example).  
+Now here is a new version of the phone numbers program that we made earlier:
+Notice that it now includes saving and loading files.  Here is some output of my running it twice:
+The new portions of this program are:
+First we will look at the save portion of the program.  First it creates a file object with the command open(filename, "w").  Next it goes through and creates a line for each of the phone numbers with the command out_file.write(x + "," + numbers[x] + "\n").  This writes out a line that contains the name, a comma, the number and follows it by a newline.
+The loading portion is a little more complicated.  It starts by getting a file object.  Then it uses a while True: loop to keep looping until a break statement is encountered.  Next it gets a line with the line in_line = in_file.readline().  The readline function will return a empty string when the end of the file is reached. The if statement checks for this and breaks out of the while loop when that happens.  Of course if the readline function did not return the newline at the end of the line there would be no way to tell if an empty string was an empty line or the end of the file so the newline is left in what readline returns.  Hence we have to get rid of the newline.  The line in_line = in_line[:-1] does this for us by dropping the last character.  Next the line name, number = in_line.split(",") splits the line at the comma into a name and a number.  This is then added to the numbers dictionary.
+Now modify the grades program from section Dictionaries so that it uses file I/O to keep a record of the students.
+Now modify the grades program from section Dictionaries so that it uses file I/O to keep a record of the students.
+
+So you now have the perfect program, it runs flawlessly, except for one detail, it will crash on invalid user input.  Have no fear, for Python has a special control structure for you.  It's called try and it tries to do something.  Here is an example of a program with a problem:
+Notice how when you enter @#& it outputs something like:
+As you can see the int() function is unhappy with the number @#& (as well it should be).  The last line shows what the problem is; Python found a ValueError.   How can our program deal with this?  What we do is first: put the place where the errors occurs in a try block, and second: tell Python how we want ValueErrors handled.  The following program does this:
+Now when we run the new program and give it @#& it tells us "That was not a number." and continues with what it was doing before.
+When your program keeps having some error that you know how to handle, put code in a try block, and put the way to handle the error in the except block.
+Here is a more complex example of Error Handling.
+The program above uses concepts from previous lessons as well as the current lesson.
+Let's look at the above program in sections.
+After we define the function called "main", we tell it that we want to "try" function named "epact". It does so "while" there is no "success".   The interpreter then goes to the line year = int(input("What year is it?\n")).
+The interpreter takes the value entered by the user and stores it in the variable named "year".
+If the value entered is not an integer or a floating point number (which would be converted to an integer by the interpreter), an exception would be raised, and execution of the try block ends, just before success is assigned the value 1.
+Let's look at some possible exceptions. the program above does not have an except clause for every possible exception, as there are numerous types or exceptions.
+If the value entered for year is an alphabetical character, a NameError exception is raised. In the program above, this is caught by the except NameError: line, and the interpreter executes the print statement below the except NameError:, then it sets the value of "year" to 0 as a precaution, clearing it of any non-numeric number. The interpreter then jumps back to the first line of the while loop, and the process restarts.
+The process above would be the same for the other exceptions we have. If an exception is raised, and there is an except clause for it in our program, the interpreter will jump to the statements under the appropriate except clause, and execute them.
+The finally statement, is sometimes used in exception handling as well. 
+Think of it as the trump card. Statements underneath the finally clause will be executed regardless of if we raise and exception or not. The finally statement will be executed after any try or except clauses prior to it. 
+Below is a simpler example where we are not looped, and the finally clause is executed regardless of exceptions.
+If we were to enter an alphabetic value for number = int(input("Please enter a number.\n")), the output would be as follows:
+Update at least the phone numbers program (in section File IO) so it doesn't crash if a user doesn't enter any data at the menu.
+For the moment I recommend looking at The Python 2 Tutorial by Guido van Rossum for more topics. If you have been following this tutorial, you should be able to understand a fair amount of it. If you want to get deeper into Python, Learn Python the Hard Way is a nice on-line textbook, although targeted at people with a more solid programming background. The Python Programming wikibook can be worth looking at, too.
+This tutorial is very much a work in progress.  Thanks to everyone who has sent me emails about it.  I enjoyed reading them, even when I have not always been the best replier.  
+Happy programming, may it change your life and the world.
+To do:
+ 
+
+The Non-Programmer's Tutorial for Python is licensed under the GNU Free Documentation License.  All programming examples in the text are granted to the public domain.  
+Version 1.3, 3 November 2008
+Copyright (C) 2000, 2001, 2002, 2007, 2008 Free Software Foundation, Inc. <http://fsf.org/>
+Everyone is permitted to copy and distribute verbatim copies of this license document, but changing it is not allowed.
+The purpose of this License is to make a manual, textbook, or other functional and useful document "free" in the sense of freedom: to assure everyone the effective freedom to copy and redistribute it, with or without modifying it, either commercially or noncommercially. Secondarily, this License preserves for the author and publisher a way to get credit for their work, while not being considered responsible for modifications made by others.
+This License is a kind of "copyleft", which means that derivative works of the document must themselves be free in the same sense. It complements the GNU General Public License, which is a copyleft license designed for free software.
+We have designed this License in order to use it for manuals for free software, because free software needs free documentation: a free program should come with manuals providing the same freedoms that the software does. But this License is not limited to software manuals; it can be used for any textual work, regardless of subject matter or whether it is published as a printed book. We recommend this License principally for works whose purpose is instruction or reference.
+This License applies to any manual or other work, in any medium, that contains a notice placed by the copyright holder saying it can be distributed under the terms of this License. Such a notice grants a world-wide, royalty-free license, unlimited in duration, to use that work under the conditions stated herein. The "Document", below, refers to any such manual or work. Any member of the public is a licensee, and is addressed as "you". You accept the license if you copy, modify or distribute the work in a way requiring permission under copyright law.
+A "Modified Version" of the Document means any work containing the Document or a portion of it, either copied verbatim, or with modifications and/or translated into another language.
+A "Secondary Section" is a named appendix or a front-matter section of the Document that deals exclusively with the relationship of the publishers or authors of the Document to the Document's overall subject (or to related matters) and contains nothing that could fall directly within that overall subject. (Thus, if the Document is in part a textbook of mathematics, a Secondary Section may not explain any mathematics.) The relationship could be a matter of historical connection with the subject or with related matters, or of legal, commercial, philosophical, ethical or political position regarding them.
+The "Invariant Sections" are certain Secondary Sections whose titles are designated, as being those of Invariant Sections, in the notice that says that the Document is released under this License. If a section does not fit the above definition of Secondary then it is not allowed to be designated as Invariant. The Document may contain zero Invariant Sections. If the Document does not identify any Invariant Sections then there are none.
+The "Cover Texts" are certain short passages of text that are listed, as Front-Cover Texts or Back-Cover Texts, in the notice that says that the Document is released under this License. A Front-Cover Text may be at most 5 words, and a Back-Cover Text may be at most 25 words.
+A "Transparent" copy of the Document means a machine-readable copy, represented in a format whose specification is available to the general public, that is suitable for revising the document straightforwardly with generic text editors or (for images composed of pixels) generic paint programs or (for drawings) some widely available drawing editor, and that is suitable for input to text formatters or for automatic translation to a variety of formats suitable for input to text formatters. A copy made in an otherwise Transparent file format whose markup, or absence of markup, has been arranged to thwart or discourage subsequent modification by readers is not Transparent. An image format is not Transparent if used for any substantial amount of text. A copy that is not "Transparent" is called "Opaque".
+Examples of suitable formats for Transparent copies include plain ASCII without markup, Texinfo input format, LaTeX input format, SGML or XML using a publicly available DTD, and standard-conforming simple HTML, PostScript or PDF designed for human modification. Examples of transparent image formats include PNG, XCF and JPG. Opaque formats include proprietary formats that can be read and edited only by proprietary word processors, SGML or XML for which the DTD and/or processing tools are not generally available, and the machine-generated HTML, PostScript or PDF produced by some word processors for output purposes only.
+The "Title Page" means, for a printed book, the title page itself, plus such following pages as are needed to hold, legibly, the material this License requires to appear in the title page. For works in formats which do not have any title page as such, "Title Page" means the text near the most prominent appearance of the work's title, preceding the beginning of the body of the text.
+The "publisher" means any person or entity that distributes copies of the Document to the public.
+A section "Entitled XYZ" means a named subunit of the Document whose title either is precisely XYZ or contains XYZ in parentheses following text that translates XYZ in another language. (Here XYZ stands for a specific section name mentioned below, such as "Acknowledgements", "Dedications", "Endorsements", or "History".) To "Preserve the Title" of such a section when you modify the Document means that it remains a section "Entitled XYZ" according to this definition.
+The Document may include Warranty Disclaimers next to the notice which states that this License applies to the Document. These Warranty Disclaimers are considered to be included by reference in this License, but only as regards disclaiming warranties: any other implication that these Warranty Disclaimers may have is void and has no effect on the meaning of this License.
+You may copy and distribute the Document in any medium, either commercially or noncommercially, provided that this License, the copyright notices, and the license notice saying this License applies to the Document are reproduced in all copies, and that you add no other conditions whatsoever to those of this License. You may not use technical measures to obstruct or control the reading or further copying of the copies you make or distribute. However, you may accept compensation in exchange for copies. If you distribute a large enough number of copies you must also follow the conditions in section 3.
+You may also lend copies, under the same conditions stated above, and you may publicly display copies.
+If you publish printed copies (or copies in media that commonly have printed covers) of the Document, numbering more than 100, and the Document's license notice requires Cover Texts, you must enclose the copies in covers that carry, clearly and legibly, all these Cover Texts: Front-Cover Texts on the front cover, and Back-Cover Texts on the back cover. Both covers must also clearly and legibly identify you as the publisher of these copies. The front cover must present the full title with all words of the title equally prominent and visible. You may add other material on the covers in addition. Copying with changes limited to the covers, as long as they preserve the title of the Document and satisfy these conditions, can be treated as verbatim copying in other respects.
+If the required texts for either cover are too voluminous to fit legibly, you should put the first ones listed (as many as fit reasonably) on the actual cover, and continue the rest onto adjacent pages.
+If you publish or distribute Opaque copies of the Document numbering more than 100, you must either include a machine-readable Transparent copy along with each Opaque copy, or state in or with each Opaque copy a computer-network location from which the general network-using public has access to download using public-standard network protocols a complete Transparent copy of the Document, free of added material. If you use the latter option, you must take reasonably prudent steps, when you begin distribution of Opaque copies in quantity, to ensure that this Transparent copy will remain thus accessible at the stated location until at least one year after the last time you distribute an Opaque copy (directly or through your agents or retailers) of that edition to the public.
+It is requested, but not required, that you contact the authors of the Document well before redistributing any large number of copies, to give them a chance to provide you with an updated version of the Document.
+You may copy and distribute a Modified Version of the Document under the conditions of sections 2 and 3 above, provided that you release the Modified Version under precisely this License, with the Modified Version filling the role of the Document, thus licensing distribution and modification of the Modified Version to whoever possesses a copy of it. In addition, you must do these things in the Modified Version:
+If the Modified Version includes new front-matter sections or appendices that qualify as Secondary Sections and contain no material copied from the Document, you may at your option designate some or all of these sections as invariant. To do this, add their titles to the list of Invariant Sections in the Modified Version's license notice. These titles must be distinct from any other section titles.
+You may add a section Entitled "Endorsements", provided it contains nothing but endorsements of your Modified Version by various parties—for example, statements of peer review or that the text has been approved by an organization as the authoritative definition of a standard.
+You may add a passage of up to five words as a Front-Cover Text, and a passage of up to 25 words as a Back-Cover Text, to the end of the list of Cover Texts in the Modified Version. Only one passage of Front-Cover Text and one of Back-Cover Text may be added by (or through arrangements made by) any one entity. If the Document already includes a cover text for the same cover, previously added by you or by arrangement made by the same entity you are acting on behalf of, you may not add another; but you may replace the old one, on explicit permission from the previous publisher that added the old one.
+The author(s) and publisher(s) of the Document do not by this License give permission to use their names for publicity for or to assert or imply endorsement of any Modified Version.
+You may combine the Document with other documents released under this License, under the terms defined in section 4 above for modified versions, provided that you include in the combination all of the Invariant Sections of all of the original documents, unmodified, and list them all as Invariant Sections of your combined work in its license notice, and that you preserve all their Warranty Disclaimers.
+The combined work need only contain one copy of this License, and multiple identical Invariant Sections may be replaced with a single copy. If there are multiple Invariant Sections with the same name but different contents, make the title of each such section unique by adding at the end of it, in parentheses, the name of the original author or publisher of that section if known, or else a unique number. Make the same adjustment to the section titles in the list of Invariant Sections in the license notice of the combined work.
+In the combination, you must combine any sections Entitled "History" in the various original documents, forming one section Entitled "History"; likewise combine any sections Entitled "Acknowledgements", and any sections Entitled "Dedications". You must delete all sections Entitled "Endorsements".
+You may make a collection consisting of the Document and other documents released under this License, and replace the individual copies of this License in the various documents with a single copy that is included in the collection, provided that you follow the rules of this License for verbatim copying of each of the documents in all other respects.
+You may extract a single document from such a collection, and distribute it individually under this License, provided you insert a copy of this License into the extracted document, and follow this License in all other respects regarding verbatim copying of that document.
+A compilation of the Document or its derivatives with other separate and independent documents or works, in or on a volume of a storage or distribution medium, is called an "aggregate" if the copyright resulting from the compilation is not used to limit the legal rights of the compilation's users beyond what the individual works permit. When the Document is included in an aggregate, this License does not apply to the other works in the aggregate which are not themselves derivative works of the Document.
+If the Cover Text requirement of section 3 is applicable to these copies of the Document, then if the Document is less than one half of the entire aggregate, the Document's Cover Texts may be placed on covers that bracket the Document within the aggregate, or the electronic equivalent of covers if the Document is in electronic form. Otherwise they must appear on printed covers that bracket the whole aggregate.
+Translation is considered a kind of modification, so you may distribute translations of the Document under the terms of section 4. Replacing Invariant Sections with translations requires special permission from their copyright holders, but you may include translations of some or all Invariant Sections in addition to the original versions of these Invariant Sections. You may include a translation of this License, and all the license notices in the Document, and any Warranty Disclaimers, provided that you also include the original English version of this License and the original versions of those notices and disclaimers. In case of a disagreement between the translation and the original version of this License or a notice or disclaimer, the original version will prevail.
+If a section in the Document is Entitled "Acknowledgements", "Dedications", or "History", the requirement (section 4) to Preserve its Title (section 1) will typically require changing the actual title.
+You may not copy, modify, sublicense, or distribute the Document except as expressly provided under this License. Any attempt otherwise to copy, modify, sublicense, or distribute it is void, and will automatically terminate your rights under this License.
+However, if you cease all violation of this License, then your license from a particular copyright holder is reinstated (a) provisionally, unless and until the copyright holder explicitly and finally terminates your license, and (b) permanently, if the copyright holder fails to notify you of the violation by some reasonable means prior to 60 days after the cessation.
+Moreover, your license from a particular copyright holder is reinstated permanently if the copyright holder notifies you of the violation by some reasonable means, this is the first time you have received notice of violation of this License (for any work) from that copyright holder, and you cure the violation prior to 30 days after your receipt of the notice.
+Termination of your rights under this section does not terminate the licenses of parties who have received copies or rights from you under this License. If your rights have been terminated and not permanently reinstated, receipt of a copy of some or all of the same material does not give you any rights to use it.
+The Free Software Foundation may publish new, revised versions of the GNU Free Documentation License from time to time. Such new versions will be similar in spirit to the present version, but may differ in detail to address new problems or concerns. See http://www.gnu.org/copyleft/.
+Each version of the License is given a distinguishing version number. If the Document specifies that a particular numbered version of this License "or any later version" applies to it, you have the option of following the terms and conditions either of that specified version or of any later version that has been published (not as a draft) by the Free Software Foundation. If the Document does not specify a version number of this License, you may choose any version ever published (not as a draft) by the Free Software Foundation. If the Document specifies that a proxy can decide which future versions of this License can be used, that proxy's public statement of acceptance of a version permanently authorizes you to choose that version for the Document.
+"Massive Multiauthor Collaboration Site" (or "MMC Site") means any World Wide Web server that publishes copyrightable works and also provides prominent facilities for anybody to edit those works. A public wiki that anybody can edit is an example of such a server. A "Massive Multiauthor Collaboration" (or "MMC") contained in the site means any set of copyrightable works thus published on the MMC site.
+"CC-BY-SA" means the Creative Commons Attribution-Share Alike 3.0 license published by Creative Commons Corporation, a not-for-profit corporation with a principal place of business in San Francisco, California, as well as future copyleft versions of that license published by that same organization.
+"Incorporate" means to publish or republish a Document, in whole or in part, as part of another Document.
+An MMC is "eligible for relicensing" if it is licensed under this License, and if all works that were first published under this License somewhere other than this MMC, and subsequently incorporated in whole or in part into the MMC, (1) had no cover texts or invariant sections, and (2) were thus incorporated prior to November 1, 2008.
+The operator of an MMC Site may republish an MMC contained in the site under CC-BY-SA on the same site at any time before August 1, 2009, provided the MMC is eligible for relicensing.
+To use this License in a document you have written, include a copy of the License in the document and put the following copyright and license notices just after the title page:
+If you have Invariant Sections, Front-Cover Texts and Back-Cover Texts, replace the "with...Texts." line with this:
+If you have Invariant Sections without Cover Texts, or some other combination of the three, merge those two alternatives to suit the situation.
+If your document contains nontrivial examples of program code, we recommend releasing these examples in parallel under your choice of free software license, such as the GNU General Public License, to permit their use in free software.
