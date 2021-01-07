@@ -65,7 +65,7 @@ def print_book_statistics(current_book, common_flag=False):  # Prints the given 
             break
 
 
-def print_common_words():  ## Calculating the common words between 2 books and returns the dict from common words
+def print_common_words():  # Calculating the common words between 2 books and returns the dict from common words
     common_words = dict()
 
     for key in book_1_words:
